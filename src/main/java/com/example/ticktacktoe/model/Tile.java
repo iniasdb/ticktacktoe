@@ -22,7 +22,6 @@ public class Tile extends Rectangle {
         this.controller = Controller.getInstance();
 
         this.setOnMouseClicked(e -> {
-            System.out.println(pos);
             controller.clicked(this);
         });
     }

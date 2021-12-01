@@ -1,6 +1,8 @@
 module com.example.ticktacktoe {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.base;
+    requires javafx.graphics;
 
 
     opens com.example.ticktacktoe to javafx.fxml;

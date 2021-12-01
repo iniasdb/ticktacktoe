@@ -42,15 +42,23 @@ public class Controller {
         return controller;
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         playerTurn = 1;
         board = new Board();
 
         server = new Server();
         connector = new ClientConnector();
 
-        server.create();
-        connector.create();
+        Thread newThread = new Thread(() -> {
+            try {
+                server.create();
+                connector.create();
+                connector.transmitLabel("ja manne");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
 
         initBoard();
     }
@@ -59,7 +67,6 @@ public class Controller {
 
         if (!gameOver) {
             if (p1Pos.contains(tile.getPos()) || p2Pos.contains(tile.getPos())) {
-                System.out.println("al gepakt");
             } else {
 
                 if (playerTurn == 1) {
@@ -89,7 +96,6 @@ public class Controller {
 
             }
         } else {
-            System.out.println("tis gedaan ej");
         }
     }
 

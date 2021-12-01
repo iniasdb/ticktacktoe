@@ -15,12 +15,10 @@ public class Server {
 
     public void create() throws IOException {
         ss=new ServerSocket(6666);
+        System.out.println("created");
         socket = ss.accept();
         din = new DataInputStream(socket.getInputStream());
         dout = new DataOutputStream(socket.getOutputStream());
-    }
-
-    public void receiveLabel() throws IOException {
 
         String text  ="";
 
@@ -30,6 +28,11 @@ public class Server {
         this.message = text;
 
         sendLabel();
+    }
+
+    public void receiveLabel() throws IOException {
+
+
 
     }
 
